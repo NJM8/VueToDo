@@ -127,7 +127,8 @@ let colors = {
   'pink-light': '#fa7ea8',
   'pink-lighter': '#ffbbca',
   'pink-lightest': '#ffebef',
-  'vue-green': '#42b883'
+  'vue-green': '#42b883',
+  'vue-blue': '#35495e'
 }
 
 module.exports = {
