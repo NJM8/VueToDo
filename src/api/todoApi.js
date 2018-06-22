@@ -1,8 +1,10 @@
 // [
 //   {
-//     listName: [
+//     listName: name,
+//     listId: number,
+//     todos: [
 //       {
-//         name: null,
+//         name: name,
 //         done: false
 //       }
 //     ]
