@@ -6,7 +6,7 @@
       <h1>Vue To Do</h1>
     </div>
     <div class="flex-auto">
-      <div class="max-w-lg app-card flex-auto">
+      <div class="max-w-lg app-card">
         <p>Router</p>
       </div>
     </div>
