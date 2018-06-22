@@ -21,6 +21,8 @@ express-force-https
 vue
 vue-router
 vuex
+purgecss-webpack-plugin
+tailwindcss
 
 > A Vue.js project
 
