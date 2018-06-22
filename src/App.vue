@@ -1,5 +1,9 @@
 <template>
-  <div id="app"/>
+  <div
+    id="app"
+    class="app-bg">
+    <h1>Hello</h1>
+  </div>
 </template>
 
 <script>
