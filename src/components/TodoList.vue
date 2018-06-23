@@ -1,7 +1,8 @@
 <template>
   <transition
     name="slide"
-    mode="out-in">
+    mode="out-in"
+    @leave="slideOut">
     <div :key="todolistdata.listId">
       <h2>{{ todolistdata.listName }}</h2>
       <todo
@@ -37,6 +38,19 @@ export default {
   data () {
     return {
       showNewItem: false
+    }
+  },
+  methods: {
+    slideOut (el, done) {
+      console.log('slideout')
+      el.animation([
+        { transition: 'translateX(-300px)' },
+        { opacity: '0' }
+      ], {
+        duration: 300,
+        ease: 'ease'
+      })
+      done()
     }
   }
 }
