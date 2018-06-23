@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <h2>{{ todolistdata.listName }}</h2>
-    <todo
-      v-for="(todo, index) in todolistdata.todos"
-      :key="index"
-      :todo="todo"/>
-    <button>add item</button>
-  </div>
+  <transition
+    name="slide"
+    mode="out-in">
+    <div :key="todolistdata.listId">
+      <h2>{{ todolistdata.listName }}</h2>
+      <todo
+        v-for="(todo, index) in todolistdata.todos"
+        :key="index"
+        :todo="todo"/>
+      <button>add item</button>
+    </div>
+  </transition>
 </template>
 
 <script>

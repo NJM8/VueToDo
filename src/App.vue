@@ -25,7 +25,11 @@
           </div>
           <div
             class="p-2 text-center flex-auto">
-            <router-view :todolistdata="getListData"/>
+            <transition
+              name="slide"
+              mode="out-in">
+              <router-view :todolistdata="getListData"/>
+            </transition>
           </div>
         </div>
       </div>
