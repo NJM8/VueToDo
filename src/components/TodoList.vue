@@ -8,17 +8,23 @@
         v-for="(todo, index) in todolistdata.todos"
         :key="index"
         :todo="todo"/>
-      <button>add item</button>
+      <new-item
+        v-if="showNewItem"
+        :type="'todoItem'"
+        @item-added="showNewItem = false"/>
+      <button @click="showNewItem = !showNewItem">Add To Do</button>
     </div>
   </transition>
 </template>
 
 <script>
 import Todo from './Todo'
+import NewItem from './NewItem'
 
 export default {
   components: {
-    Todo
+    Todo,
+    NewItem
   },
   props: {
     todolistdata: {
@@ -26,6 +32,11 @@ export default {
       default: function () {
         return {}
       }
+    }
+  },
+  data () {
+    return {
+      showNewItem: false
     }
   }
 }

@@ -21,7 +21,11 @@
                 :to="`/todoLists/${todoList.listId}`"
                 class="routerLink">{{ todoList.listName }}</router-link>
             </div>
-            <button>Add List</button>
+            <new-item
+              v-if="showNewItem"
+              :type="'listItem'"
+              @item-added="showNewItem = false"/>
+            <button @click="showNewItem = !showNewItem">Add List</button>
           </div>
           <div
             class="p-2 text-center flex-auto">
@@ -47,17 +51,20 @@
 <script>
 import '@/assets/styles/main.css'
 import TodoList from './components/TodoList'
+import NewItem from './components/NewItem'
 import { mapGetters } from 'vuex'
 import router from './router/index'
 
 export default {
   name: 'App',
   components: {
-    TodoList
+    TodoList,
+    NewItem
   },
   data () {
     return {
-      currentListId: null
+      currentListId: null,
+      showNewItem: false
     }
   },
   computed: {

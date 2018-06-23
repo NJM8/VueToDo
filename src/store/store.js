@@ -20,7 +20,7 @@ export default new Vuex.Store({
             done: false
           },
           {
-            name: 'one',
+            name: 'three',
             done: false
           }
         ]
@@ -61,19 +61,28 @@ export default new Vuex.Store({
           }
         ]
       }
-    ]
+    ],
+    nextListId: 4
   },
   mutations: {
     setTodoLists (state, payload) {
       state.todoLists = payload
     },
     setNewList (state, payload) {
-      state.todoLists.push(payload)
+      state.todoLists.push({
+        listName: payload,
+        listId: state.nextListId,
+        todos: []
+      })
+      state.nextListId++
     },
     setNewTodo (state, payload) {
       state.todoLists.forEach(list => {
         if (list.name === payload.name) {
-          list.push(payload.newTodo)
+          list.todos.push({
+            name: payload,
+            done: false
+          })
         }
       })
     }
@@ -89,12 +98,12 @@ export default new Vuex.Store({
     saveTodoLists ({state}) {
       todoAPI.saveTodoLists(state.todoLists)
     },
-    addNewList ({dispatch, commit}, payload) {
-      commit('addNewList', payload)
-      dispatch('saveTodoLists')
-    },
-    addNewTodo ({commit, dispatch}, payload) {
-      commit('setNewTodo', payload)
+    addNewItem ({dispatch, commit}, payload) {
+      if (payload.type === 'listItem') {
+        commit('setNewList', payload.value)
+      } else {
+        commit('setNewTodo', payload.value)
+      }
       dispatch('saveTodoLists')
     }
   },
