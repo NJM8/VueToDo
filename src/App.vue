@@ -9,26 +9,23 @@
       <div class="max-w-lg app-card">
         <div class="flex items-stretch">
           <div
-            id="routerlinks"
             class="p-2 border-r-2 border-vue-green">
             <h2>Todo Lists</h2>
-            <ul>
-              <li>list one</li>
-              <li>list two</li>
-              <li>list three</li>
-            </ul>
+            <div class="flex flex-col my-2">
+              <router-link
+                to="/home"
+                class="routerLink">Home</router-link>
+              <router-link
+                v-for="todoList in getTodoLists"
+                :key="todoList.listId"
+                :to="`/todoLists/${todoList.listId}`"
+                class="routerLink">{{ todoList.listName }}</router-link>
+            </div>
             <button>Add List</button>
           </div>
           <div
-            id="routerView"
             class="p-2 text-center flex-auto">
-            <h2>list title</h2>
-            <ul>
-              <li>item one <span>Done</span> <span>Delete</span></li>
-              <li>item two <span>Done</span> <span>Delete</span></li>
-              <li>item three <span>Done</span> <span>Delete</span></li>
-            </ul>
-            <button>add item</button>
+            <router-view :todos="getSpecificList"/>
           </div>
         </div>
       </div>
@@ -45,9 +42,25 @@
 
 <script>
 import '@/assets/styles/main.css'
+import TodoList from './components/TodoList'
+import { mapGetters } from 'vuex'
 
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    TodoList
+  },
+  computed: {
+    ...mapGetters([
+      'getTodoLists',
+      'getSpecificList'
+    ])
+  },
+  watch: {
+    '$route' (to, from) {
+      console.log(to)
+    }
+  }
 }
 </script>
 
