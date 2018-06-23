@@ -101,13 +101,6 @@ export default new Vuex.Store({
   getters: {
     getTodoLists (state) {
       return state.todoLists
-    },
-    getSpecificList (state, payload) {
-      state.todoLists.forEach(list => {
-        if (list.listId === payload) {
-          return list.todos
-        }
-      })
     }
   }
 })
