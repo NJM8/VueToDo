@@ -32,7 +32,9 @@
             <transition
               name="slide"
               mode="out-in">
-              <router-view :todolistdata="getListData"/>
+              <router-view
+                :todolistdata="getListData"
+                :key="$route.fullPath"/>
             </transition>
           </div>
         </div>
