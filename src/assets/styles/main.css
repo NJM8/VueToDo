@@ -73,6 +73,7 @@
   .router-link-active {
     @apply .font-bold
   }
+  /* purgecss start ignore */
   .slide-enter {
     transform: translateX(-300px);
     opacity: 0;
@@ -85,3 +86,4 @@
     transform: translateX(-300px);
     opacity: 0;
   }
+  /* purgecss end ignore */
