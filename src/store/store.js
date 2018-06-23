@@ -6,7 +6,62 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    todoLists: []
+    todoLists: [
+      {
+        listName: 'numbers',
+        listId: 1,
+        todos: [
+          {
+            name: 'one',
+            done: false
+          },
+          {
+            name: 'two',
+            done: false
+          },
+          {
+            name: 'one',
+            done: false
+          }
+        ]
+      },
+      {
+        listName: 'letters',
+        listId: 2,
+        todos: [
+          {
+            name: 'a',
+            done: false
+          },
+          {
+            name: 'b',
+            done: false
+          },
+          {
+            name: 'c',
+            done: false
+          }
+        ]
+      },
+      {
+        listName: 'directions',
+        listId: 3,
+        todos: [
+          {
+            name: 'up',
+            done: false
+          },
+          {
+            name: 'left',
+            done: false
+          },
+          {
+            name: 'right',
+            done: false
+          }
+        ]
+      }
+    ]
   },
   mutations: {
     setTodoLists (state, payload) {
@@ -46,6 +101,13 @@ export default new Vuex.Store({
   getters: {
     getTodoLists (state) {
       return state.todoLists
+    },
+    getSpecificList (state, payload) {
+      state.todoLists.forEach(list => {
+        if (list.listId === payload) {
+          return list.todos
+        }
+      })
     }
   }
 })
