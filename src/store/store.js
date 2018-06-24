@@ -48,20 +48,25 @@ export default new Vuex.Store({
         }
       })
       state.nextListId--
+    },
+    setDeleteTodo (state, payload) {
+      const listIdx = state.todoLists.findIndex(list => list.listName === payload.listName)
+      const todoIdx = state.todoLists[listIdx].todos.findIndex(todo => todo.name === payload.todoName)
+      state.todoLists[listIdx].todos.splice(todoIdx, 1)
     }
   },
   actions: {
-    checkForSavedTodoLists ({commit}) {
+    checkForSavedTodoLists ({ commit }) {
       const todos = todoAPI.checkForSavedTodos()
       if (todos) {
         commit('setTodoLists', todos)
         commit('setNextListId')
       }
     },
-    saveTodoLists ({state}) {
+    saveTodoLists ({ state }) {
       todoAPI.saveTodoLists(state.todoLists)
     },
-    addNewItem ({dispatch, commit}, payload) {
+    addNewItem ({ dispatch, commit }, payload) {
       if (payload.type === 'listItem') {
         commit('setNewList', payload.value)
       } else {
@@ -69,8 +74,12 @@ export default new Vuex.Store({
       }
       dispatch('saveTodoLists')
     },
-    deleteList ({commit, dispatch}, payload) {
+    deleteList ({ commit, dispatch }, payload) {
       commit('setDeleteList', payload)
+      dispatch('saveTodoLists')
+    },
+    deleteTodo ({ commit, dispatch }, payload) {
+      commit('setDeleteTodo', payload)
       dispatch('saveTodoLists')
     }
   },

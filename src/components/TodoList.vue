@@ -4,7 +4,8 @@
     <todo
       v-for="(todo, index) in todolistdata.todos"
       :key="index"
-      :todo="todo"/>
+      :todo="todo"
+      @delete-todo="deleteTodo({ listName: todolistdata.listName, todoName: todo.name })"/>
     <new-item
       v-if="showNewItem"
       :type="'todoItem'"
@@ -40,7 +41,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'deleteList'
+      'deleteList',
+      'deleteTodo'
     ])
   }
 }

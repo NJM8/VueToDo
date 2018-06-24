@@ -1,6 +1,7 @@
 <template>
   <div>
-    <p>{{ todo.name }} <span>completed: {{ todo.done }}</span> </p>
+    <p>{{ todo.name }} <span>completed: {{ todo.done }} </span>
+    <button @click="$emit('delete-todo', todo.name)">delete</button></p>
   </div>
 </template>
 
