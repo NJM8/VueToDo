@@ -23,9 +23,9 @@ export default new Vuex.Store({
     },
     setNewTodo (state, payload) {
       state.todoLists.forEach(list => {
-        if (list.name === payload.name) {
+        if (list.listName === payload.listName) {
           list.todos.push({
-            name: payload,
+            name: payload.value,
             done: false
           })
         }
@@ -55,7 +55,7 @@ export default new Vuex.Store({
       if (payload.type === 'listItem') {
         commit('setNewList', payload.value)
       } else {
-        commit('setNewTodo', payload.value)
+        commit('setNewTodo', payload)
       }
       dispatch('saveTodoLists')
     }

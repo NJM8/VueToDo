@@ -8,6 +8,7 @@
     <new-item
       v-if="showNewItem"
       :type="'todoItem'"
+      :listname="todolistdata.listName"
       @item-added="showNewItem = false"/>
     <button @click="showNewItem = !showNewItem">Add To Do</button>
   </div>

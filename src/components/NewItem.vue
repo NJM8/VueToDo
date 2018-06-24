@@ -3,7 +3,7 @@
     <input
       v-model="newItem"
       type="text">
-    <button @click="localAddNewItem({ 'type': type, value: newItem })">Add</button>
+    <button @click="localAddNewItem({ 'type': type, value: newItem, listName: listname })">Add</button>
   </div>
 </template>
 
@@ -13,6 +13,12 @@ import { mapActions } from 'vuex'
 export default {
   props: {
     type: {
+      type: String,
+      default: function () {
+        return ''
+      }
+    },
+    listname: {
       type: String,
       default: function () {
         return ''
