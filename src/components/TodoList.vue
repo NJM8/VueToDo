@@ -11,12 +11,14 @@
       :listname="todolistdata.listName"
       @item-added="showNewItem = false"/>
     <button @click="showNewItem = !showNewItem">Add To Do</button>
+    <button @click="deleteList(todolistdata.listName)">Delete List</button>
   </div>
 </template>
 
 <script>
 import Todo from './Todo'
 import NewItem from './NewItem'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -35,6 +37,11 @@ export default {
     return {
       showNewItem: false
     }
+  },
+  methods: {
+    ...mapActions([
+      'deleteList'
+    ])
   }
 }
 </script>

@@ -38,6 +38,16 @@ export default new Vuex.Store({
         }
         return res
       }, 0) + 1
+    },
+    setDeleteList (state, payload) {
+      const idx = state.todoLists.findIndex(list => list.listName === payload)
+      state.todoLists.splice(idx, 1)
+      state.todoLists.forEach((list, index) => {
+        if (index >= idx) {
+          list.listId--
+        }
+      })
+      state.nextListId--
     }
   },
   actions: {
@@ -57,6 +67,10 @@ export default new Vuex.Store({
       } else {
         commit('setNewTodo', payload)
       }
+      dispatch('saveTodoLists')
+    },
+    deleteList ({commit, dispatch}, payload) {
+      commit('setDeleteList', payload)
       dispatch('saveTodoLists')
     }
   },
