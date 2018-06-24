@@ -2,7 +2,8 @@
   <div>
     <input
       v-model="newItem"
-      type="text">
+      type="text"
+      @keyup.enter="localAddNewItem({ 'type': type, value: newItem, listName: listname })">
     <button @click="localAddNewItem({ 'type': type, value: newItem, listName: listname })">Add</button>
   </div>
 </template>
