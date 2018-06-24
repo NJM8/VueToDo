@@ -23,6 +23,7 @@ vue-router
 vuex
 purgecss-webpack-plugin
 tailwindcss
+vue-fontawesome
 
 > A Vue.js project
 
