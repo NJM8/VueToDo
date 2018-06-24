@@ -6,63 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    todoLists: [
-      {
-        listName: 'numbers',
-        listId: 1,
-        todos: [
-          {
-            name: 'one',
-            done: false
-          },
-          {
-            name: 'two',
-            done: false
-          },
-          {
-            name: 'three',
-            done: false
-          }
-        ]
-      },
-      {
-        listName: 'letters',
-        listId: 2,
-        todos: [
-          {
-            name: 'a',
-            done: false
-          },
-          {
-            name: 'b',
-            done: false
-          },
-          {
-            name: 'c',
-            done: false
-          }
-        ]
-      },
-      {
-        listName: 'directions',
-        listId: 3,
-        todos: [
-          {
-            name: 'up',
-            done: false
-          },
-          {
-            name: 'left',
-            done: false
-          },
-          {
-            name: 'right',
-            done: false
-          }
-        ]
-      }
-    ],
-    nextListId: 4
+    todoLists: [],
+    nextListId: 0
   },
   mutations: {
     setTodoLists (state, payload) {
@@ -85,15 +30,23 @@ export default new Vuex.Store({
           })
         }
       })
+    },
+    setNextListId (state) {
+      state.nextListId = state.todoLists.reduce((res, list) => {
+        if (list.listId > res) {
+          res = list.listId
+        }
+        return res
+      }, 0) + 1
     }
   },
   actions: {
     checkForSavedTodoLists ({commit}) {
-      todoAPI.checkForSavedTodos(todos => {
-        if (todos) {
-          commit('setTodoLists', todos)
-        }
-      })
+      const todos = todoAPI.checkForSavedTodos()
+      if (todos) {
+        commit('setTodoLists', todos)
+        commit('setNextListId')
+      }
     },
     saveTodoLists ({state}) {
       todoAPI.saveTodoLists(state.todoLists)

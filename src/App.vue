@@ -54,7 +54,7 @@
 import '@/assets/styles/main.css'
 import TodoList from './components/TodoList'
 import NewItem from './components/NewItem'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import router from './router/index'
 
 export default {
@@ -88,6 +88,12 @@ export default {
   },
   created () {
     router.replace('/home')
+    this.checkForSavedTodoLists()
+  },
+  methods: {
+    ...mapActions([
+      'checkForSavedTodoLists'
+    ])
   }
 }
 </script>
