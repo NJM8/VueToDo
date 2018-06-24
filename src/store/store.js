@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import todoAPI from '../api/todoApi'
+import router from '../router/index'
 
 Vue.use(Vuex)
 
@@ -77,6 +78,7 @@ export default new Vuex.Store({
     deleteList ({ commit, dispatch }, payload) {
       commit('setDeleteList', payload)
       dispatch('saveTodoLists')
+      router.replace('/home')
     },
     deleteTodo ({ commit, dispatch }, payload) {
       commit('setDeleteTodo', payload)
