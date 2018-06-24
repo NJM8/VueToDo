@@ -1,11 +1,17 @@
 <template>
   <div>
     <p>{{ todo.name }} <span>completed: {{ todo.done }} </span>
-    <button @click="$emit('delete-todo', todo.name)">delete</button></p>
+      <font-awesome-icon
+        :icon="crossIcon"
+        class="cursor-pointer"
+        @click.prevent="$emit('delete-todo', todo.name)"/>
+    </p>
   </div>
 </template>
 
 <script>
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
 export default {
   props: {
     todo: {
@@ -13,6 +19,11 @@ export default {
       default: function () {
         return {}
       }
+    }
+  },
+  computed: {
+    crossIcon () {
+      return faTimes
     }
   }
 }

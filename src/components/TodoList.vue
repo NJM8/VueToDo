@@ -1,15 +1,17 @@
 <template>
   <div :key="todolistdata.listId">
-    <h2>{{ todolistdata.listName }}</h2>
+    <h2 class="mb-2">{{ todolistdata.listName }}</h2>
     <todo
       v-for="(todo, index) in todolistdata.todos"
       :key="index"
       :todo="todo"
+      class="my-1"
       @delete-todo="deleteTodo({ listName: todolistdata.listName, todoName: todo.name })"/>
     <new-item
       v-if="showNewItem"
       :type="'todoItem'"
       :listname="todolistdata.listName"
+      class="my-2"
       @item-added="showNewItem = false"/>
     <button @click="showNewItem = !showNewItem">Add To Do</button>
     <button @click="deleteList(todolistdata.listName)">Delete List</button>
