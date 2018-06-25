@@ -1,7 +1,7 @@
 <template>
   <div
     :class="todo.done ? 'completed-todo' : ''"
-    class="todo-card w-1/3 mx-auto flex justify-between todo-transition">
+    class="todo-card w-1/2 mx-auto flex justify-between todo-transition">
     <p>{{ todo.name }}</p>
     <font-awesome-icon
       :icon="statusIcon"

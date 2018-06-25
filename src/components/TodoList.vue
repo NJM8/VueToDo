@@ -18,12 +18,14 @@
       :listname="todolistdata.listName"
       class="w-1/3 my-2 mx-auto"
       @item-added="showNewItem = false"/>
-    <button
-      class="btn-card btn-green-active-styling mt-2"
-      @click="showNewItem = !showNewItem">Add To Do</button>
-    <button
-      class="btn-card btn-red-active-styling mt-2"
-      @click="deleteList(todolistdata.listName)">Delete List</button>
+    <div class="mt-4">
+      <button
+        class="btn-card btn-green-active-styling"
+        @click="showNewItem = !showNewItem">Add To Do</button>
+      <button
+        class="btn-card btn-red-active-styling"
+        @click="deleteList(todolistdata.listName)">Delete List</button>
+    </div>
   </div>
 </template>
 
