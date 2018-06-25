@@ -13,6 +13,13 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 // import Purgecss webpack plugin and glob-all
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob-all')
+const tailwindcss = require("tailwindcss");
+
+class TailwindExtractor {
+  static extract(content) {
+    return content.match(/[A-z0-9-:\/]+/g) || [];
+  }
+}
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -67,7 +74,13 @@ const webpackConfig = merge(baseWebpackConfig, {
         path.join(__dirname, './../src/index.html'),
         path.join(__dirname, './../**/*.vue'),
         path.join(__dirname, './../src/**/*.js')
-      ])
+      ]),
+      extractors: [
+        {
+          extractor: TailwindExtractor,
+          extensions: ["html", "js", "vue"]
+        }
+      ]
     }),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
