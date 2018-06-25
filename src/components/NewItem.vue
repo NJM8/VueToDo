@@ -5,6 +5,7 @@
       v-model="newItem"
       type="text"
       class="input"
+      placeholder="Press enter to submit"
       @keyup.enter="localAddNewItem({ 'type': type, value: newItem, listName: listname })">
   </div>
 </template>

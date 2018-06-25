@@ -8,7 +8,7 @@
     <div class="flex-auto">
       <div class="max-w-lg app-card">
         <div class="flex items-stretch">
-          <div class="p-2 border-r-2 border-vue-green flex-no-shrink w-48 pr-8">
+          <div class="w-1/3 border-r-2 border-vue-green flex-no-shrink w-48 p-2 pr-8">
             <h2>Todo Lists</h2>
             <transition-group
               name="list-transitions"
