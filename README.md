@@ -2,27 +2,42 @@
 
 Vue.js Code Challenge
 
-Brief
+Brief:
+
 Create a to-do list app with Vue.js where a user can add, update, delete, and complete their to-dos.
 
-Requirements
+Requirements:
+
 Must be built with Vue.js
+
 Doesn’t need to be hooked up to a database
+
 Please upload your final result to a GitHub repository
 
-Bonus Points
+Bonus Points:
+
 Style it with TailwindCSS
+
 Use Vuex, Vue Router, and/or the Vue-cli
 
 Final Modules used:
+
 express
+
 serve-static
+
 express-force-https
+
 vue
+
 vue-router
+
 vuex
+
 purgecss-webpack-plugin
+
 tailwindcss
+
 vue-fontawesome
 
 > A Vue.js project
