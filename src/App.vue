@@ -1,7 +1,7 @@
 <template>
   <div
     id="app"
-    class="app-bg flex flex-col">
+    class="flex flex-col">
     <div class="max-w-xs app-card">
       <h1>Vue To Do</h1>
     </div>
