@@ -2,7 +2,7 @@
   <div :key="todolistdata.listId">
     <h2 class="mb-2">{{ todolistdata.listName }}</h2>
     <transition-group
-      name="listTransitions"
+      name="list-transitions"
       tag="div"
       class="flex flex-col">
       <todo
@@ -19,10 +19,10 @@
       class="w-1/3 my-2 mx-auto"
       @item-added="showNewItem = false"/>
     <button
-      class="btnCard btnGreenActiveStyling mt-2"
+      class="btn-card btn-green-active-styling mt-2"
       @click="showNewItem = !showNewItem">Add To Do</button>
     <button
-      class="btnCard btnRedActiveStyling mt-2"
+      class="btn-card btn-red-active-styling mt-2"
       @click="deleteList(todolistdata.listName)">Delete List</button>
   </div>
 </template>

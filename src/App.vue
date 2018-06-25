@@ -12,25 +12,25 @@
             class="p-2 border-r-2 border-vue-green flex-no-shrink w-48">
             <h2>Todo Lists</h2>
             <transition-group
-              name="listTransitions"
+              name="list-transitions"
               tag="div"
               class="flex flex-col my-2">
               <router-link
                 :key="'home'"
                 to="/home"
-                class="routerLink btnCard btnBlueActiveStyling">Home</router-link>
+                class="router-link btn-card btn-blue-active-styling">Home</router-link>
               <router-link
                 v-for="todoList in getTodoLists"
                 :key="todoList.listName"
                 :to="`/todoLists/${todoList.listId}`"
-                class="routerLink btnCard btnBlueActiveStyling">{{ todoList.listName }}</router-link>
+                class="router-link btn-card btn-blue-active-styling">{{ todoList.listName }}</router-link>
             </transition-group>
             <new-item
               v-if="showNewItem"
               :type="'listItem'"
               @item-added="showNewItem = false"/>
             <button
-              class="btnCard btnGreenActiveStyling"
+              class="btn-card btn-green-active-styling"
               @click="showNewItem = !showNewItem">Add List</button>
           </div>
           <div

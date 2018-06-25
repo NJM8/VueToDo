@@ -67,37 +67,37 @@
   .app-card {
     @apply .rounded .shadow-lg .text-center .bg-grey-lightest .my-4 .mx-auto .px-6 .py-2
   }
-  .routerLink {
+  .router-link {
     @apply .text-black .no-underline
   }
   .router-link-active {
     @apply .font-bold
   }
-  .btnCard, .todoCard {
+  .btn-card, .todo-card {
     @apply .bg-white .border .border-grey-light .rounded .shadow .py-2 .px-4 .mt-2
   }
-  .btnCard:hover {
+  .todo-transition {
+    transition: all 0.5s;
+  }
+  .btn-card:hover {
     @apply .bg-grey-lighter
   }
-  .btnGreenActiveStyling:active {
+  .btn-green-active-styling:active {
     @apply .bg-vue-green
   }
-  .btnRedActiveStyling:active {
+  .btn-red-active-styling:active {
     @apply .bg-red
   }
-  .btnBlueActiveStyling:active {
+  .btn-blue-active-styling:active {
     @apply .bg-vue-blue
   }
   .input {
     @apply .shadow .appearance-none .border .rounded .w-full .py-2 .px-3 .leading-tight
   }
-  .todoItem {
-    transition: all 0.5s;
-  }
-  .completedTodo {
+  .completed-todo {
     @apply .bg-grey-lighter
   }
-  .completedTodo > p {
+  .completed-todo > p {
     @apply .line-through
   }
   /* purgecss start ignore */
@@ -113,13 +113,13 @@
     transform: translateX(-300px);
     opacity: 0;
   }
-  .listTransitions-enter-active, .listTransitions-leave-active {
+  .list-transitions-enter-active, .list-transitions-leave-active {
     transition: all 0.5s;
   }
-  .listTransitions-enter, .listTransitions-leave-to {
+  .list-transitions-enter, .list-transitions-leave-to {
     opacity: 0;
   }
-  .listTransitions-move {
+  .list-transitions-move {
     transition: all 0.5s ease;
   }
   /* purgecss end ignore */
