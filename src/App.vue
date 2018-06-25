@@ -29,6 +29,7 @@
               :type="'listItem'"
               @item-added="showNewItem = false"/>
             <button
+              v-if="!showNewItem"
               class="btn-card btn-green-active-styling"
               @click="showNewItem = !showNewItem">Add List</button>
           </div>

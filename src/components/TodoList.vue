@@ -20,6 +20,7 @@
       @item-added="showNewItem = false"/>
     <div class="mt-4">
       <button
+        v-if="!showNewItem"
         class="btn-card btn-green-active-styling"
         @click="showNewItem = !showNewItem">Add To Do</button>
       <button

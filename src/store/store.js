@@ -15,6 +15,13 @@ export default new Vuex.Store({
       state.todoLists = payload
     },
     setNewList (state, payload) {
+      const currentLists = state.todoLists.reduce((res, list) => {
+        res.push(list.listName)
+        return res
+      }, [])
+      if (currentLists.includes(payload)) {
+        return
+      }
       state.todoLists.push({
         listName: payload,
         listId: state.nextListId,
@@ -25,6 +32,13 @@ export default new Vuex.Store({
     setNewTodo (state, payload) {
       state.todoLists.forEach(list => {
         if (list.listName === payload.listName) {
+          const currentTodos = list.todos.reduce((res, todo) => {
+            res.push(todo.name)
+            return res
+          }, [])
+          if (currentTodos.includes(payload.value)) {
+            return
+          }
           list.todos.push({
             name: payload.value,
             done: false

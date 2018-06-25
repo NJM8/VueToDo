@@ -41,6 +41,9 @@ export default {
       'addNewItem'
     ]),
     localAddNewItem (payload) {
+      if (this.newItem.length === 0) {
+        return
+      }
       this.addNewItem(payload)
       this.$emit('item-added')
     }
