@@ -54,6 +54,11 @@ export default new Vuex.Store({
       const listIdx = state.todoLists.findIndex(list => list.listName === payload.listName)
       const todoIdx = state.todoLists[listIdx].todos.findIndex(todo => todo.name === payload.todoName)
       state.todoLists[listIdx].todos.splice(todoIdx, 1)
+    },
+    setTodoStatus (state, payload) {
+      const listIdx = state.todoLists.findIndex(list => list.listName === payload.listName)
+      const todoIdx = state.todoLists[listIdx].todos.findIndex(todo => todo.name === payload.todoName)
+      state.todoLists[listIdx].todos[todoIdx].done = !state.todoLists[listIdx].todos[todoIdx].done
     }
   },
   actions: {
@@ -82,6 +87,10 @@ export default new Vuex.Store({
     },
     deleteTodo ({ commit, dispatch }, payload) {
       commit('setDeleteTodo', payload)
+      dispatch('saveTodoLists')
+    },
+    changeTodoStatus ({ commit, dispatch }, payload) {
+      commit('setTodoStatus', payload)
       dispatch('saveTodoLists')
     }
   },
