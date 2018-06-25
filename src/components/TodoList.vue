@@ -19,10 +19,10 @@
       class="my-2"
       @item-added="showNewItem = false"/>
     <button
-      class="btnCard btnActiveStyling mt-2"
+      class="btnCard btnGreenActiveStyling mt-2"
       @click="showNewItem = !showNewItem">Add To Do</button>
     <button
-      class="btnCard btnActiveStyling mt-2"
+      class="btnCard btnRedActiveStyling mt-2"
       @click="deleteList(todolistdata.listName)">Delete List</button>
   </div>
 </template>

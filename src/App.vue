@@ -18,19 +18,19 @@
               <router-link
                 :key="'home'"
                 to="/home"
-                class="routerLink btnCard btnActiveStyling">Home</router-link>
+                class="routerLink btnCard btnBlueActiveStyling">Home</router-link>
               <router-link
                 v-for="todoList in getTodoLists"
                 :key="todoList.listName"
                 :to="`/todoLists/${todoList.listId}`"
-                class="routerLink btnCard btnActiveStyling">{{ todoList.listName }}</router-link>
+                class="routerLink btnCard btnBlueActiveStyling">{{ todoList.listName }}</router-link>
             </transition-group>
             <new-item
               v-if="showNewItem"
               :type="'listItem'"
               @item-added="showNewItem = false"/>
             <button
-              class="btnCard btnActiveStyling"
+              class="btnCard btnGreenActiveStyling"
               @click="showNewItem = !showNewItem">Add List</button>
           </div>
           <div
