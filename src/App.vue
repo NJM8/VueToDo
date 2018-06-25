@@ -1,7 +1,7 @@
 <template>
   <div
     id="app"
-    class="flex flex-col">
+    class="flex flex-col h-100 min-h-screen">
     <div class="max-w-xs app-card">
       <h1>Vue To Do</h1>
     </div>
