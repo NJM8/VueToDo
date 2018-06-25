@@ -77,13 +77,16 @@
     @apply .bg-white .border .border-grey-light .rounded .shadow .py-2 .px-4 .mt-2
   }
   .btnActiveStyling:hover {
-    @apply .bg-grey-lightest
+    @apply .bg-grey-lighter
   }
   .btnActiveStyling:active {
     @apply .bg-vue-green
   }
   .input {
     @apply .shadow .appearance-none .border .rounded .w-full .py-2 .px-3 .leading-tight
+  }
+  .todoItem {
+    transition: all 0.5s;
   }
   .completedTodo {
     @apply .bg-grey-lighter
@@ -103,5 +106,14 @@
     transition: all 300ms ease;
     transform: translateX(-300px);
     opacity: 0;
+  }
+  .listTransitions-enter-active, .listTransitions-leave-active {
+    transition: all 0.5s;
+  }
+  .listTransitions-enter, .listTransitions-leave-to {
+    opacity: 0;
+  }
+  .listTransitions-move {
+    transition: all 0.5s ease;
   }
   /* purgecss end ignore */

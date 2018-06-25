@@ -11,16 +11,20 @@
           <div
             class="p-2 border-r-2 border-vue-green flex-no-shrink w-48">
             <h2>Todo Lists</h2>
-            <div class="flex flex-col my-2">
+            <transition-group
+              name="listTransitions"
+              tag="div"
+              class="flex flex-col my-2">
               <router-link
+                :key="'home'"
                 to="/home"
                 class="routerLink btnCard btnActiveStyling">Home</router-link>
               <router-link
                 v-for="todoList in getTodoLists"
-                :key="todoList.listId"
+                :key="todoList.listName"
                 :to="`/todoLists/${todoList.listId}`"
                 class="routerLink btnCard btnActiveStyling">{{ todoList.listName }}</router-link>
-            </div>
+            </transition-group>
             <new-item
               v-if="showNewItem"
               :type="'listItem'"

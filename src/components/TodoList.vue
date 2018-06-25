@@ -1,12 +1,17 @@
 <template>
   <div :key="todolistdata.listId">
     <h2 class="mb-2">{{ todolistdata.listName }}</h2>
-    <todo
-      v-for="(todo, index) in sortedTodos"
-      :key="index"
-      :todo="todo"
-      @delete-todo="deleteTodo({ listName: todolistdata.listName, todoName: todo.name })"
-      @change-todo-status="changeTodoStatus({ listName: todolistdata.listName, todoName: todo.name })"/>
+    <transition-group
+      name="listTransitions"
+      tag="div"
+      class="flex flex-col">
+      <todo
+        v-for="(todo, index) in sortedTodos"
+        :key="todo.name"
+        :todo="todo"
+        @delete-todo="deleteTodo({ listName: todolistdata.listName, todoName: todo.name })"
+        @change-todo-status="changeTodoStatus({ listName: todolistdata.listName, todoName: todo.name })"/>
+    </transition-group>
     <new-item
       v-if="showNewItem"
       :type="'todoItem'"
