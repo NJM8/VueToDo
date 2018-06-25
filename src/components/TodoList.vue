@@ -2,7 +2,7 @@
   <div :key="todolistdata.listId">
     <h2 class="mb-2">{{ todolistdata.listName }}</h2>
     <todo
-      v-for="(todo, index) in todolistdata.todos"
+      v-for="(todo, index) in sortedTodos"
       :key="index"
       :todo="todo"
       @delete-todo="deleteTodo({ listName: todolistdata.listName, todoName: todo.name })"
@@ -43,6 +43,11 @@ export default {
   data () {
     return {
       showNewItem: false
+    }
+  },
+  computed: {
+    sortedTodos () {
+      return this.todolistdata.todos.slice().sort((a, b) => a.done > b.done)
     }
   },
   methods: {
