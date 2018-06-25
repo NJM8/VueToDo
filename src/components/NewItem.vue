@@ -4,6 +4,7 @@
       ref="input"
       v-model="newItem"
       type="text"
+      class="input"
       @keyup.enter="localAddNewItem({ 'type': type, value: newItem, listName: listname })">
   </div>
 </template>

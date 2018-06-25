@@ -9,23 +9,25 @@
       <div class="max-w-lg app-card">
         <div class="flex items-stretch">
           <div
-            class="p-2 border-r-2 border-vue-green flex-no-shrink">
+            class="p-2 border-r-2 border-vue-green flex-no-shrink w-48">
             <h2>Todo Lists</h2>
             <div class="flex flex-col my-2">
               <router-link
                 to="/home"
-                class="routerLink">Home</router-link>
+                class="routerLink btnCard btnActiveStyling">Home</router-link>
               <router-link
                 v-for="todoList in getTodoLists"
                 :key="todoList.listId"
                 :to="`/todoLists/${todoList.listId}`"
-                class="routerLink">{{ todoList.listName }}</router-link>
+                class="routerLink btnCard btnActiveStyling">{{ todoList.listName }}</router-link>
             </div>
             <new-item
               v-if="showNewItem"
               :type="'listItem'"
               @item-added="showNewItem = false"/>
-            <button @click="showNewItem = !showNewItem">Add List</button>
+            <button
+              class="btnCard btnActiveStyling"
+              @click="showNewItem = !showNewItem">Add List</button>
           </div>
           <div
             class="p-2 text-center flex-auto">

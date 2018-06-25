@@ -5,16 +5,20 @@
       v-for="(todo, index) in todolistdata.todos"
       :key="index"
       :todo="todo"
-      class="my-1"
-      @delete-todo="deleteTodo({ listName: todolistdata.listName, todoName: todo.name })"/>
+      @delete-todo="deleteTodo({ listName: todolistdata.listName, todoName: todo.name })"
+      @change-todo-status="changeTodoStatus({ listName: todolistdata.listName, todoName: todo.name })"/>
     <new-item
       v-if="showNewItem"
       :type="'todoItem'"
       :listname="todolistdata.listName"
       class="my-2"
       @item-added="showNewItem = false"/>
-    <button @click="showNewItem = !showNewItem">Add To Do</button>
-    <button @click="deleteList(todolistdata.listName)">Delete List</button>
+    <button
+      class="btnCard btnActiveStyling mt-2"
+      @click="showNewItem = !showNewItem">Add To Do</button>
+    <button
+      class="btnCard btnActiveStyling mt-2"
+      @click="deleteList(todolistdata.listName)">Delete List</button>
   </div>
 </template>
 
@@ -44,7 +48,8 @@ export default {
   methods: {
     ...mapActions([
       'deleteList',
-      'deleteTodo'
+      'deleteTodo',
+      'changeTodoStatus'
     ])
   }
 }
