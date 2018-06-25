@@ -79,6 +79,7 @@ export default {
     ...mapGetters([
       'getTodoLists'
     ]),
+    // returns the list data for the list we have navigated to using currentListId
     getListData () {
       for (let i = 0; i < this.getTodoLists.length; i++) {
         if (this.getTodoLists[i].listId === this.currentListId) {
@@ -88,6 +89,7 @@ export default {
     }
   },
   watch: {
+    // sets currentListId from router params, allows us to find the list data from the store and load it
     '$route' (to, from) {
       this.currentListId = Number(to.params.id)
     }

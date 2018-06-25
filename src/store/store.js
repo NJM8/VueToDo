@@ -11,9 +11,11 @@ export default new Vuex.Store({
     nextListId: 0
   },
   mutations: {
+    // store todo lists from api
     setTodoLists (state, payload) {
       state.todoLists = payload
     },
+    // add new list, increment nextListId, return if it already exists
     setNewList (state, payload) {
       const currentLists = state.todoLists.reduce((res, list) => {
         res.push(list.listName)
@@ -29,6 +31,7 @@ export default new Vuex.Store({
       })
       state.nextListId++
     },
+    // add a new todo, return if it already exists
     setNewTodo (state, payload) {
       state.todoLists.forEach(list => {
         if (list.listName === payload.listName) {
@@ -46,6 +49,7 @@ export default new Vuex.Store({
         }
       })
     },
+    // sets the nextListId when fetching data from api
     setNextListId (state) {
       state.nextListId = state.todoLists.reduce((res, list) => {
         if (list.listId > res) {
@@ -54,6 +58,7 @@ export default new Vuex.Store({
         return res
       }, 0) + 1
     },
+    // delete list, decrement nextListId
     setDeleteList (state, payload) {
       const idx = state.todoLists.findIndex(list => list.listName === payload)
       state.todoLists.splice(idx, 1)
@@ -64,11 +69,13 @@ export default new Vuex.Store({
       })
       state.nextListId--
     },
+    // find a delete a todo
     setDeleteTodo (state, payload) {
       const listIdx = state.todoLists.findIndex(list => list.listName === payload.listName)
       const todoIdx = state.todoLists[listIdx].todos.findIndex(todo => todo.name === payload.todoName)
       state.todoLists[listIdx].todos.splice(todoIdx, 1)
     },
+    // toggle todo status
     setTodoStatus (state, payload) {
       const listIdx = state.todoLists.findIndex(list => list.listName === payload.listName)
       const todoIdx = state.todoLists[listIdx].todos.findIndex(todo => todo.name === payload.todoName)
@@ -76,6 +83,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    // on app start, check if todos are already saved in local storage
     checkForSavedTodoLists ({ commit }) {
       const todos = todoAPI.checkForSavedTodos()
       if (todos) {
