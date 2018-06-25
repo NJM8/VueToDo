@@ -16,7 +16,7 @@
       v-if="showNewItem"
       :type="'todoItem'"
       :listname="todolistdata.listName"
-      class="w-1/3 my-2 mx-auto"
+      class="w-33 my-2 mx-auto"
       @item-added="showNewItem = false"/>
     <button
       class="btn-card btn-green-active-styling mt-2"
