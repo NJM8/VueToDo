@@ -6,7 +6,7 @@
       tag="div"
       class="flex flex-col">
       <todo
-        v-for="(todo, index) in sortedTodos"
+        v-for="todo in sortedTodos"
         :key="todo.name"
         :todo="todo"
         @delete-todo="deleteTodo({ listName: todolistdata.listName, todoName: todo.name })"
