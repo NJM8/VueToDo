@@ -108,7 +108,7 @@ export default new Vuex.Store({
     deleteList ({ commit, dispatch }, payload) {
       commit('setDeleteList', payload)
       dispatch('saveTodoLists')
-      router.replace('/home')
+      router.replace('/welcome')
     },
     deleteTodo ({ commit, dispatch }, payload) {
       commit('setDeleteTodo', payload)
