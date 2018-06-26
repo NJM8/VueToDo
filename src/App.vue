@@ -15,9 +15,9 @@
               tag="div"
               class="flex flex-col my-2">
               <router-link
-                :key="'home'"
-                to="/home"
-                class="router-link btn-card btn-blue-active-styling">Home</router-link>
+                :key="'welcome'"
+                to="/welcome"
+                class="router-link btn-card btn-blue-active-styling">Welcome</router-link>
               <router-link
                 v-for="todoList in getTodoLists"
                 :key="todoList.listName"
@@ -95,7 +95,7 @@ export default {
     }
   },
   created () {
-    router.replace('/home')
+    router.replace('/welcome')
     this.checkForSavedTodoLists()
   },
   methods: {
