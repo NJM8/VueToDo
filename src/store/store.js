@@ -95,6 +95,9 @@ export default new Vuex.Store({
       todoAPI.saveTodoLists(state.todoLists)
     },
     addNewItem ({ dispatch, commit }, payload) {
+      if (payload.value.length === 0) {
+        return
+      }
       if (payload.type === 'listItem') {
         commit('setNewList', payload.value)
       } else {

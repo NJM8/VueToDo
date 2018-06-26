@@ -12,17 +12,16 @@
         @delete-todo="deleteTodo({ listName: todolistdata.listName, todoName: todo.name })"
         @change-todo-status="changeTodoStatus({ listName: todolistdata.listName, todoName: todo.name })"/>
     </transition-group>
-    <new-item
-      v-if="showNewItem"
-      :type="'todoItem'"
-      :listname="todolistdata.listName"
-      class="w-1/2 my-2 mx-auto"
-      @item-added="showNewItem = false"/>
-    <div class="mt-4">
+    <input
+      v-model="newTodo"
+      type="text"
+      class="input w-1/2 mx-auto"
+      placeholder="Press enter to submit"
+      @keyup.enter="localAddNewItem({ 'type': 'todoItem', value: newTodo, listName: todolistdata.listName })">
+    <div>
       <button
-        v-if="!showNewItem"
         class="btn-card btn-green-active-styling"
-        @click="showNewItem = !showNewItem">Add To Do</button>
+        @click="localAddNewItem({ 'type': 'todoItem', value: newTodo, listName: todolistdata.listName })">Add To Do</button>
       <button
         class="btn-card btn-red-active-styling"
         @click="deleteList(todolistdata.listName)">Delete List</button>
@@ -32,13 +31,11 @@
 
 <script>
 import Todo from './Todo'
-import NewItem from './NewItem'
 import { mapActions } from 'vuex'
 
 export default {
   components: {
-    Todo,
-    NewItem
+    Todo
   },
   props: {
     todolistdata: {
@@ -50,7 +47,7 @@ export default {
   },
   data () {
     return {
-      showNewItem: false
+      newTodo: ''
     }
   },
   computed: {
@@ -62,8 +59,13 @@ export default {
     ...mapActions([
       'deleteList',
       'deleteTodo',
-      'changeTodoStatus'
-    ])
+      'changeTodoStatus',
+      'addNewItem'
+    ]),
+    localAddNewItem (payload) {
+      this.addNewItem(payload)
+      this.newTodo = ''
+    }
   }
 }
 </script>

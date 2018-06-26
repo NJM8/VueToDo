@@ -24,14 +24,15 @@
                 :to="`/todoLists/${todoList.listId}`"
                 class="router-link btn-card btn-blue-active-styling">{{ todoList.listName }}</router-link>
             </transition-group>
-            <new-item
-              v-if="showNewItem"
-              :type="'listItem'"
-              @item-added="showNewItem = false"/>
+            <input
+              v-model="newList"
+              type="text"
+              class="input w-full"
+              placeholder="Press enter to submit"
+              @keyup.enter="localAddNewItem({ 'type': 'listItem', value: newList })">
             <button
-              v-if="!showNewItem"
               class="btn-card btn-green-active-styling"
-              @click="showNewItem = !showNewItem">Add List</button>
+              @click="localAddNewItem({ 'type': 'listItem', value: newList })">Add List</button>
           </div>
           <div
             class="p-2 text-center flex-auto">
@@ -59,20 +60,18 @@
 <script>
 import '@/assets/styles/main.css'
 import TodoList from './components/TodoList'
-import NewItem from './components/NewItem'
 import { mapGetters, mapActions } from 'vuex'
 import router from './router/index'
 
 export default {
   name: 'App',
   components: {
-    TodoList,
-    NewItem
+    TodoList
   },
   data () {
     return {
       currentListId: null,
-      showNewItem: false
+      newList: ''
     }
   },
   computed: {
@@ -100,8 +99,13 @@ export default {
   },
   methods: {
     ...mapActions([
-      'checkForSavedTodoLists'
-    ])
+      'checkForSavedTodoLists',
+      'addNewItem'
+    ]),
+    localAddNewItem (payload) {
+      this.addNewItem(payload)
+      this.newList = ''
+    }
   }
 }
 </script>
