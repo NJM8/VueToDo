@@ -94,12 +94,13 @@ export default new Vuex.Store({
     saveTodoLists ({ state }) {
       todoAPI.saveTodoLists(state.todoLists)
     },
-    addNewItem ({ dispatch, commit }, payload) {
+    addNewItem ({ dispatch, commit, state }, payload) {
       if (payload.value.length === 0) {
         return
       }
       if (payload.type === 'listItem') {
         commit('setNewList', payload.value)
+        router.push(`/todoLists/${state.nextListId - 1}`)
       } else {
         commit('setNewTodo', payload)
       }
