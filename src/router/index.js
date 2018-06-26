@@ -17,7 +17,7 @@ export default new Router({
       props: true
     },
     {
-      path: '*', redirect: '/home'
+      path: '*', redirect: '/welcome'
     }
   ],
   mode: 'history'
