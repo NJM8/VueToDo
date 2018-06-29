@@ -6,16 +6,17 @@
     <font-awesome-icon
       :icon="statusIcon"
       class="cursor-pointer ml-auto mx-2"
-      @click="$emit('change-todo-status', todo.name)"/>
+      @click="changeTodoStatus({ listName: listname, todoName: todo.name })"/>
     <font-awesome-icon
       :icon="crossIcon"
       class="cursor-pointer mx-2"
-      @click.prevent="$emit('delete-todo', todo.name)"/>
+      @click="deleteTodo({ listName: listname, todoName: todo.name })"/>
   </div>
 </template>
 
 <script>
 import { faTimes, faUndo, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { mapActions } from 'vuex'
 
 export default {
   props: {
@@ -23,6 +24,12 @@ export default {
       type: Object,
       default: function () {
         return {}
+      }
+    },
+    listname: {
+      type: String,
+      default: function () {
+        return ''
       }
     }
   },
@@ -33,6 +40,12 @@ export default {
     statusIcon () {
       return this.todo.done ? faUndo : faCheck
     }
+  },
+  methods: {
+    ...mapActions([
+      'deleteTodo',
+      'changeTodoStatus'
+    ])
   }
 }
 </script>

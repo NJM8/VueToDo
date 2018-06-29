@@ -9,8 +9,7 @@
         v-for="todo in sortedTodos"
         :key="todo.name"
         :todo="todo"
-        @delete-todo="deleteTodo({ listName: todolistdata.listName, todoName: todo.name })"
-        @change-todo-status="changeTodoStatus({ listName: todolistdata.listName, todoName: todo.name })"/>
+        :listname="todolistdata.listName"/>
     </transition-group>
     <input
       v-model="newTodo"
@@ -58,8 +57,6 @@ export default {
   methods: {
     ...mapActions([
       'deleteList',
-      'deleteTodo',
-      'changeTodoStatus',
       'addNewItem'
     ]),
     localAddNewItem (payload) {
